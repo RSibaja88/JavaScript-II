@@ -40,34 +40,67 @@ const items = ['Pencil', 'Notebook', 'yo-yo', 'Gum'];
 */
 
 
-function getLength(items, cb) {
-    // getLength passes the length of the array into the callback.
+const itemsLength = (cb) => {
     return cb(items.length);
-}
-//calling back function (local scope) into the global scope, where 'items' lives//
-const testGetLength = getLength(items, (length) => `${length}`);
-console.log(testGetLength);
+};
+itemsLength(cb => {
+    console.log(cb);
+    //passes length of array
+});
 
-function last(items, cb) {
-    // last passes the last item of the array into the callback.
+
+
+const lastObject = (cb) => {
     return cb(items.length - 1);
-}
-const lastObject = last(items, (lastObject) => `${cb}`);
-console.log(lastObject);
+};
+lastObject(cb => {
+    console.log(cb);
+    // last passes the last item of the array into the callback.
+
+});
 
 
-// function sumNums(x, y, cb) {
+
+
+const sumNum = (a, b, cb) => {
+    return cb(a + b);
+};
+sumNum(8, 10, sum => {
+    console.log(sum);
+});
+
 //   // sumNums adds two numbers (x, y) and passes the result to the callback.
 // }
 
 // function multiplyNums(x, y, cb) {
 //   // multiplyNums multiplies two numbers and passes the result to the callback.
 // }
+const multNum = (a, b, cb) => {
+    return cb(a * b);
+};
+multNum(81, 15, mult => {
+    console.log(mult);
+});
+
+
 
 // function contains(item, list, cb) {
 //   // contains checks if an item is present inside of the given array/list.
 //   // Pass true to the callback if it is, otherwise pass false.
 // }
+
+function contains(item, list, cb) {
+    for (g = 0; g < list.length; g++) {
+        if (item === list[g]) {
+            return cb(' is contained in the array!');
+        }
+    }
+    return cb(' is NOT contained in the array!')
+}
+contains('Gum', items, function(contained) {
+    console.log("Gum" + contained);
+})
+
 
 // /* STRETCH PROBLEM */
 
